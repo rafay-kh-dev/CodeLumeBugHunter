@@ -2,7 +2,7 @@
 # Kaam: <img> aur console.log pakarna, Vite vs Next ka farq samajh ke
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import safe_read, get_files_by_ext, is_test_file
+from core.utils import safe_read, get_files_by_ext, is_test_file
 
 def check_js_smart(project, has_next):
     """Sirf JS / JSX / TS / TSX ka check, test files ko chor ke."""

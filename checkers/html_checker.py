@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 import re
-from utils import safe_read, get_files_by_ext, is_test_file
+from core.utils import safe_read, get_files_by_ext, is_test_file
 
 def check_html_smart(project, has_next):
     """HTML + JSX me alt check karo, aur Vite vs Next ka farq batao."""

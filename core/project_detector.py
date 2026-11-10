@@ -3,7 +3,7 @@
 # Ise performance.py sab se pehle bulayega
 
 import json
-from utils import safe_read, get_files_by_ext
+from core.utils import safe_read, get_files_by_ext
 
 ALL_EXTS = [".html", ".py", ".jsx", ".tsx", ".js", ".ts", ".php", ".css", ".json", ".md", ".sql"]
 

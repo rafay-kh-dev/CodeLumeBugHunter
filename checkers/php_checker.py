@@ -2,7 +2,7 @@
 # Kaam: PHP me SQL Injection, XSS, kamzor password hashing pakarna
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import safe_read, get_files_by_ext
+from core.utils import safe_read, get_files_by_ext
 
 def check_php_smart(project):
     """Sirf .php files ka check, baaki kuch nahi."""

@@ -2,7 +2,7 @@
 # Kaam: Python me print() zyada hai, khali except hai, ye pakarna
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import safe_read, get_files_by_ext
+from core.utils import safe_read, get_files_by_ext
 
 def check_python_smart(project):
     """Sirf .py files ka check, baaki kuch nahi."""

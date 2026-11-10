@@ -2,7 +2,7 @@
 # Kaam: SQL Database ka kacha chitta nikalna
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import safe_read, get_files_by_ext, format_size
+from core.utils import safe_read, get_files_by_ext, format_size
 
 def check_sql_smart(project):
     """Sirf .sql files ka check, baaki kuch nahi."""

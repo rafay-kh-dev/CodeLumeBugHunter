@@ -2,7 +2,7 @@
 # Kaam: README hai ya nahi, ye pakarna
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import get_files_by_ext
+from core.utils import get_files_by_ext
 
 def check_md_smart(project):
     """Sirf .md files ka check."""

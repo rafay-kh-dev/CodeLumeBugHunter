@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 import re
-from utils import safe_read, get_files_by_ext, format_size
+from core.utils import safe_read, get_files_by_ext, format_size
 
 def check_css_smart(project):
     """Sirf .css files ka check, baaki kuch nahi."""

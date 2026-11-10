@@ -2,7 +2,7 @@
 # Kaam: Bari images pakarna jo website ko slow karti hain
 # Ise performance.py bulayega, khud nahi chalega
 
-from utils import is_ignored, format_size
+from core.utils import is_ignored, format_size
 
 def check_images(project):
     """Sirf images ka check - .jpg .png .webp sab."""

@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 import json
-from utils import safe_read, get_files_by_ext, get_all_code_files, is_ignored
+from core.utils import safe_read, get_files_by_ext, get_all_code_files, is_ignored
 
 def check_backend_universal(project):
     """Backend ka pura check - ek jagah."""

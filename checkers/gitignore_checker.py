@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 from pathlib import Path
-from utils import safe_read, is_ignored
+from core.utils import safe_read, is_ignored
 
 def check_gitignore_smart(project, counts):
     """Root wali .gitignore ko pehle dekho, phir conditional check karo."""

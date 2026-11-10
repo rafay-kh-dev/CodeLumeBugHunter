@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 import json
-from utils import safe_read, get_files_by_ext
+from core.utils import safe_read, get_files_by_ext
 
 def check_json_smart(project):
     """Sirf .json files ka check, baaki kuch nahi."""

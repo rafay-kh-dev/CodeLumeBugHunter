@@ -1,6 +1,20 @@
+# CodeLume Bug Hunter - .gitignore
+# Kaam: Wo files jo GitHub pe nahi jani chahiye
+
+# Secret files - kabhi GitHub pe nahi
 .env
+
+# Python ka kachra - khud banta hai
 __pycache__/
 *.pyc
+
+# Virtual env - har bande ka apna hota hai
 .venv/
 venv/
+
+# Reports - har baar nayi banti hain, GitHub pe nahi
 bug_report.md
+performance_report.md
+
+# Logs - agar kabhi ban jayein to
+*.log

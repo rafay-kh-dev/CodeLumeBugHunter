@@ -3,7 +3,7 @@
 # Ise performance.py bulayega, khud nahi chalega
 
 import re
-from utils import safe_read, get_all_code_files
+from core.utils import safe_read, get_all_code_files
 
 def check_secrets_smart(project):
     """Har code file me hardcoded secret dhoondo."""
