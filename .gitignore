@@ -6,3 +6,8 @@ venv/
 bug_report.md
 performance_report.md
 *.log
+# CodeLume Reports - private, do not push
+codelume-report-*.md
+performance_report.md
+*_report.md
+!README.md
