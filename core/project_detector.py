@@ -1,56 +1,50 @@
-import json
-from core.utils import safe_read, get_files_by_ext
+import os
+import sys
+from pathlib import Path
 
-ALL_EXTS = [".html", ".py", ".jsx", ".tsx", ".js", ".ts", ".php", ".css", ".json", ".md", ".sql"]
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+from core.utils import get_files_by_ext, safe_read
 
 def detect_project_type(project):
-    """Project ka type pehchano, file counts bhi do, aur has_next / has_vite bhi do."""
     types = []
-    counts = {}
-
-    for ext in ALL_EXTS:
-        c = len(get_files_by_ext(project, ext))
-        if c > 0:
-            counts[ext] = c
-
-    has_next = False
-    has_vite = False
-    has_react = False
-
-    for pf in get_files_by_ext(project, ".json"):
-        if pf.name == "package.json":
-            try:
-                data = json.loads(safe_read(pf))
-                deps = {**data.get("dependencies", {}), **data.get("devDependencies", {})}
-                if "next" in deps:
-                    has_next = True
-                if "vite" in deps or "@vitejs/plugin-react" in deps or "@tailwindcss/vite" in deps:
-                    has_vite = True
-                if "react" in deps:
-                    has_react = True
-            except:
-                pass
-
-    if list(project.rglob("next.config.*")):
-        has_next = True
-
-    if has_next:
-        types.append("Next.js Project - next/image use hoga")
-    elif has_vite and has_react:
-        types.append("Vite + React Project - normal <img> + loading=lazy use hoga")
-    elif has_react:
-        types.append("React Project - Vite ya Next.js check karo")
-
-    if counts.get(".php", 0) > 0:
-        types.append(f"PHP Project - {counts['.php']} files")
-    if counts.get(".py", 0) > 0:
-        types.append(f"Python Project - {counts['.py']} files - automation ya backend")
-    if counts.get(".sql", 0) > 0:
-        types.append(f"SQL Database Project - {counts['.sql']} .sql files")
-    if counts.get(".html", 0) > 0 and not has_next and not has_vite and not has_react:
-        types.append(f"Static HTML Website - {counts['.html']} files")
-
+    package_files = [f for f in get_files_by_ext(project, [".json"]) if f.name == "package.json"]
+    combined_pkg = ""
+    for f in package_files:
+        try:
+            combined_pkg += safe_read(f) + "\n"
+        except:
+            pass
+    if '"next"' in combined_pkg:
+        types.append("Next.js Project - Use next/image for optimized images")
+    elif '"react"' in combined_pkg:
+        if '"vite"' in combined_pkg:
+            types.append("React + Vite Project - Use optimized images and code splitting")
+        else:
+            types.append("React Project - Use optimized images and code splitting")
+    if '"【entity-express¦canonical_name=Express】"' in combined_pkg:
+        types.append("【entity-Express¦canonical_name=Express】 Backend - Check routes, auth, and environment variables")
+    if '"vue"' in combined_pkg:
+        types.append("Vue Project - Use optimized images and lazy loading")
+    if '"@angular/core"' in combined_pkg:
+        types.append("Angular Project - Use optimized images and lazy loading")
+    py_files = get_files_by_ext(project, [".py"])
+    py_files = [f for f in py_files if f.suffix == ".py"]
+    if py_files:
+        types.append(f"Python Project - {len(py_files)} files - Automation or backend scripts")
+    php_files = get_files_by_ext(project, [".php"])
+    php_files = [f for f in php_files if f.suffix == ".php"]
+    if php_files:
+        types.append(f"PHP Project - {len(php_files)} files - Check sanitization and SQL injection")
     if not types:
-        types.append("Unknown / Mixed Project")
+        types.append("General Project - Mixed file types detected")
+    return types
 
-    return types, counts, has_next, has_vite
+detect_project = detect_project_type
+get_project_type = detect_project_type
+detect_project_types = detect_project_type
+
+if __name__ == "__main__":
+    path = sys.argv[1] if len(sys.argv) > 1 else "."
+    for line in detect_project_type(Path(path)):
+        print(line)

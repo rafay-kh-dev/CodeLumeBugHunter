@@ -1,35 +1,41 @@
-from core.utils import is_ignored, format_size
+import os
+import sys
+from pathlib import Path
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+from core.utils import get_files_by_ext, format_size
 
 def check_images(project):
-    """Sirf images ka check - .jpg .png .webp sab."""
-    out = []
-    images = []
-    total = 0
+    results = []
+    image_exts = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico"]
+    image_files = get_files_by_ext(project, image_exts)
+    if not image_files:
+        results.append("  No images found.")
+        return results
+    total_size = 0
+    for f in image_files:
+        try:
+            total_size += f.stat().st_size
+        except:
+            pass
+    results.append(f"Total Images: {len(image_files)}, Total Size: {format_size(total_size)}")
+    for f in image_files:
+        try:
+            size_kb = f.stat().st_size / 1024
+            rel = f.relative_to(project)
+            if size_kb > 200:
+                results.append(f"  [FAIL] {f.name} - {size_kb:.1f} KB - {rel}")
+                results.append(f"       Fix: Reduce to under 200KB, convert to WebP.")
+            elif size_kb > 100:
+                results.append(f"  [WARN] {f.name} - {size_kb:.1f} KB - {rel}")
+            else:
+                results.append(f"  [OK] {f.name} - {size_kb:.1f} KB - {rel}")
+        except:
+            pass
+    return results
 
-    for f in project.rglob("*"):
-        if is_ignored(f):
-            continue
-        if f.suffix.lower() in [".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"]:
-            sz = f.stat().st_size
-            total += sz
-            images.append((f, sz))
-
-    images.sort(key=lambda x: x[1], reverse=True)
-
-    out.append(f"Total Images: {len(images)}, Total Size: {format_size(total)}")
-
-    for f, sz in images[:10]:
-        if sz > 500 * 1024:
-            st = "FAIL"
-        elif sz > 200 * 1024:
-            st = "WARN"
-        else:
-            st = "OK"
-        out.append(f"  [{st}] {f.name} - {format_size(sz)} - {f.relative_to(project)}")
-        if sz > 500 * 1024:
-            out.append(f"       Fix: 200KB se kam karo, WebP me badlo.")
-
-    if not images:
-        out.append("  [INFO] Koi image nahi mili.")
-
-    return out
+if __name__ == "__main__":
+    path = sys.argv[1] if len(sys.argv) > 1 else "."
+    for line in check_images(Path(path)):
+        print(line)
