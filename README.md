@@ -4,9 +4,9 @@ A smart, universal, and stack-aware bug hunter for any project. It detects your 
 
 No more noise. No false positives for stacks you don't use.
 
-[Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-[License](https://img.shields.io/badge/License-MIT-green.svg)
-[Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
 ## Why CodeLume?
 
@@ -87,17 +87,17 @@ codelume-report-codelume-2026-11-11.md
 
 ## Categories
 
-| Category | What It Checks |
-|----------|---------------|
-| frontend | HTML, CSS, JS, Images, Frontend |
-| backend | Backend, SQL, JSON, Database |
-| security | Secrets, Gitignore, Backend |
-| performance | Images, Frontend, CSS, JS |
-| architecture | Architecture, Frontend, Backend |
-| python | Python |
-| php | PHP |
-| quality | Python, PHP, Markdown, JSON, Gitignore |
-| all | All analyzers |
+| Category     | What It Checks                         |
+| ------------ | -------------------------------------- |
+| frontend     | HTML, CSS, JS, Images, Frontend        |
+| backend      | Backend, SQL, JSON, Database           |
+| security     | Secrets, Gitignore, Backend            |
+| performance  | Images, Frontend, CSS, JS              |
+| architecture | Architecture, Frontend, Backend        |
+| python       | Python                                 |
+| php          | PHP                                    |
+| quality      | Python, PHP, Markdown, JSON, Gitignore |
+| all          | All analyzers                          |
 
 ## Stack-Aware Filtering
 
@@ -131,10 +131,10 @@ You will never see PHP results on a Python project, or SQL results on a MongoDB 
 ## Summary
 
 | Category | PASS | WARN | FAIL |
-|----------|------|------|------|
-| JSON | 0 | 0 | 0 |
-| Backend | 4 | 0 | 1 |
-| Database | 2 | 1 | 0 |
+| -------- | ---- | ---- | ---- |
+| JSON     | 0    | 0    | 0    |
+| Backend  | 4    | 0    | 1    |
+| Database | 2    | 1    | 0    |
 
 ## Skipped - Not in Tech Stack
 
@@ -189,4 +189,5 @@ Pull requests are welcome. Keep the code clean, professional, and dependency-fre
 MIT License. See LICENSE for details.
 
 ---
+
 Built with CodeLume Bug Hunter.
