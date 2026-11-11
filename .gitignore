@@ -1,13 +1,10 @@
-.env
 __pycache__/
 *.pyc
-.venv/
-venv/
-bug_report.md
-performance_report.md
-*.log
-# CodeLume Reports - private, do not push
+dist/
+build/
+*.spec
+*.exe
 codelume-report-*.md
-performance_report.md
-*_report.md
-!README.md
+frontend/node_modules/
+frontend/dist/
+.env
