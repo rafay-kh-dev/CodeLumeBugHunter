@@ -1,50 +1,42 @@
-from core.utils import safe_read, get_files_by_ext, format_size
+import os
+import sys
+from pathlib import Path
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+from core.utils import get_files_by_ext
 
 def check_sql_smart(project):
-    """Sirf .sql files ka check, baaki kuch nahi."""
-    out = []
-    files = get_files_by_ext(project, ".sql")
+    results = []
+    sql_files = get_files_by_ext(project, [".sql"])
+    sql_files = [f for f in sql_files if f.suffix == ".sql"]
 
-    if not files:
-        return ["  Koi .sql file nahi mili, skip. Agar 【entity-MongoDB¦canonical_name=MongoDB】 hai to ye normal hai."]
+    if not sql_files:
+        results.append("  No .sql files found, skipped. Normal if using MongoDB.")
+        return results
 
-    out.append(f"Total SQL Files: {len(files)}")
-    total_tables = 0
-    total_star = 0
+    results.append(f"Total SQL Files: {len(sql_files)}")
+    for f in sql_files:
+        try:
+            text = f.read_text(encoding="utf-8", errors="ignore")
+            rel = f.relative_to(project)
+            if "SELECT *" in text:
+                results.append(f"  [WARN] SELECT * found: {rel} - Specify columns instead of *")
+            if "DELETE" in text and "WHERE" not in text:
+                results.append(f"  [FAIL] DELETE without WHERE: {rel} - Dangerous, will delete all rows")
+            if "DROP TABLE" in text:
+                results.append(f"  [WARN] DROP TABLE found: {rel}")
+            if "PRIMARY KEY" in text:
+                results.append(f"  [PASS] PRIMARY KEY found: {rel}")
+            if "INDEX" in text:
+                results.append(f"  [PASS] INDEX found: {rel}")
+            if "FOREIGN KEY" in text:
+                results.append(f"  [PASS] FOREIGN KEY found: {rel}")
+        except:
+            pass
+    return results
 
-    for f in files:
-        text = safe_read(f)
-        upper = text.upper()
-
-        tables = upper.count("CREATE TABLE")
-        total_tables += tables
-
-        star = text.count("SELECT *") + text.count("select *")
-        total_star += star
-
-        out.append(f"  File: {f.relative_to(project)} - Tables: {tables}, Size: {format_size(f.stat().st_size)}")
-
-        if star > 0:
-            out.append(f"    [FAIL] SELECT * {star} baar mila - Sirf zaroori columns likho, * slow karta hai")
-
-        for line in text.split("\n"):
-            l = line.strip().upper()
-            if l.startswith("DELETE FROM") and "WHERE" not in l:
-                out.append(f"    [FAIL] Khatarnak DELETE bina WHERE ke: {line.strip()[:70]} - Poora table delete ho jayega!")
-            if l.startswith("DROP TABLE"):
-                out.append(f"    [WARN] DROP TABLE mila: {line.strip()[:70]} - Backup le ke hi chalao")
-
-        if "PRIMARY KEY" not in upper and tables > 0:
-            out.append(f"    [FAIL] PRIMARY KEY nahi hai - Har table me PRIMARY KEY hona chahiye")
-
-        if "INDEX" not in upper and tables > 0:
-            out.append(f"    [WARN] INDEX nahi mila - Bina index ke search slow hoga")
-
-        if "FOREIGN KEY" not in upper and tables > 1:
-            out.append(f"    [WARN] FOREIGN KEY nahi mila - Tables ka relation kaise pata chalega?")
-
-    out.append(f"Summary: Total Tables: {total_tables}, Total SELECT *: {total_star}")
-    if total_star == 0:
-        out.append("  [PASS] SELECT * nahi hai, acha hai.")
-
-    return out
+if __name__ == "__main__":
+    path = sys.argv[1] if len(sys.argv) > 1 else "."
+    for line in check_sql_smart(Path(path)):
+        print(line)
