@@ -31,6 +31,6 @@ Most scanners run every check on every project. CodeLume does not.
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/codelume-bug-hunter.git
+git clone https://github.com/rafay-kh-dev/codelume-bug-hunter.git
 cd codelume-bug-hunter
 ```
