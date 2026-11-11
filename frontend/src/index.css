@@ -1,1 +1,159 @@
 @import "tailwindcss";
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #FAFAF8;
+    color: #0A0A0A;
+    -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.03em;
+}
+
+.label-spaced {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+}
+
+.site-header {
+    background: #fff;
+    border-bottom: 1px solid #E8E8E3;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #E8E8E3;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.sidebar {
+    background: #fff;
+    border: 1px solid #E8E8E3;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.layout {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 1024px) {
+    .layout {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 340px;
+        flex-shrink: 0;
+    }
+}
+
+.input-box {
+    width: 100%;
+    margin-top: 12px;
+    background: #F5F5F0;
+    border: 1px solid #E8E8E3;
+    border-radius: 999px;
+    padding: 13px 18px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.cat-btn {
+    padding: 14px;
+    border-radius: 16px;
+    text-align: left;
+    border: 1px solid #E8E8E3;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.cat-btn:hover {
+    border-color: #0A0A0A;
+}
+
+.btn-black {
+    background: #0A0A0A;
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.capsule-active {
+    background: #0A0A0A;
+    color: #fff;
+}
+
+.capsule {
+    background: #fff;
+    border: 1px solid #E8E8E3;
+    color: #0A0A0A;
+}
+
+.progress-track {
+    height: 8px;
+    background: #EDEDE8;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 14px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #0A0A0A;
+    border-radius: 999px;
+    transition: width 1s;
+}
+
+.chip {
+    background: #F5F5F0;
+    border: 1px solid #E8E8E3;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chip:hover {
+    border-color: #0A0A0A;
+}
+
+.tool-btn {
+    background: #fff;
+    border: 1px solid #E8E8E3;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool-btn:hover {
+    border-color: #0A0A0A;
+}
