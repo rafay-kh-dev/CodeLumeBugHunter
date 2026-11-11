@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Antigravity Brand Gradient -->
+    <linearGradient id="favicon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4285F4" />
+      <stop offset="33%" stop-color="#34A853" />
+      <stop offset="66%" stop-color="#FBBC05" />
+      <stop offset="100%" stop-color="#EA4335" />
+    </linearGradient>
+    
+    <!-- Soft Background Rounded Box for crisp visibility in dark/light browser tabs -->
+    <style>
+      .bg-card { fill: #ffffff; rx: 14px; }
+      @media (prefers-color-scheme: dark) {
+        .bg-card { fill: #0a0f1c; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background Plate -->
+  <rect width="64" height="64" class="bg-card" />
+
+  <!-- Code Brackets & Core Symbol (< / >) with Gradient -->
+  <g fill="none" stroke="url(#favicon-gradient)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Bracket < -->
+    <path d="M22 18 L10 32 L22 46" />
+    
+    <!-- Right Bracket > -->
+    <path d="M42 18 L54 32 L42 46" />
+    
+    <!-- Slash / -->
+    <path d="M37 16 L27 48" />
+  </g>
+</svg>
