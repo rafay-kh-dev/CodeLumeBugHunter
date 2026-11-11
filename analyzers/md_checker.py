@@ -1,7 +1,3 @@
-# md_checker.py - CodeLume Bug Hunter - Sirf README / Markdown ka check
-# Kaam: README hai ya nahi, ye pakarna
-# Ise performance.py bulayega, khud nahi chalega
-
 from core.utils import get_files_by_ext
 
 def check_md_smart(project):
@@ -17,7 +13,6 @@ def check_md_smart(project):
         out.append("  [WARN] README.md nahi hai - Project ka README banao, taake naye bande ko samajh aaye")
 
     for f in files:
-        # Choti README ka check
         try:
             text = f.read_text(encoding="utf-8", errors="ignore")
             if len(text) < 200 and f.name.lower() == "readme.md":

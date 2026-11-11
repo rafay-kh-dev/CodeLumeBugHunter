@@ -1,7 +1,3 @@
-# project_detector.py - CodeLume Bug Hunter - Project ki pehchan
-# Kaam: Batana ke ye project Next.js hai, Vite hai, Python hai, PHP hai, SQL hai
-# Ise performance.py sab se pehle bulayega
-
 import json
 from core.utils import safe_read, get_files_by_ext
 
@@ -21,7 +17,6 @@ def detect_project_type(project):
     has_vite = False
     has_react = False
 
-    # package.json se sahi check - bina space ke
     for pf in get_files_by_ext(project, ".json"):
         if pf.name == "package.json":
             try:
@@ -36,7 +31,6 @@ def detect_project_type(project):
             except:
                 pass
 
-    # File se bhi pehchano - next.config hai to Next.js hai
     if list(project.rglob("next.config.*")):
         has_next = True
 

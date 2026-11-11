@@ -1,10 +1,5 @@
-# utils.py - CodeLume Bug Hunter - Common Auzaar
-# Kaam: Wo kaam jo har checker ko chahiye - file parhna, size banana, ignore karna
-# Ise har checker import karega, dobara nahi likhega
-
 from pathlib import Path
 
-# In folders ko hamesha ignore karo
 IGNORE = {"node_modules", ".next", ".git", "__pycache__", ".venv", "venv", "dist", "build"}
 
 def format_size(n):

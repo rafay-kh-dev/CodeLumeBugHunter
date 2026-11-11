@@ -1,7 +1,3 @@
-# html_checker.py - CodeLume Bug Hunter - Sirf HTML + Accessibility ka check
-# Kaam: <img> me alt hai ya nahi, aur Vite hai ya Next.js, us hisab se salah dena
-# Ise performance.py bulayega, khud nahi chalega
-
 import re
 from core.utils import safe_read, get_files_by_ext, is_test_file
 
@@ -28,7 +24,6 @@ def check_html_smart(project, has_next):
     if no_alt == 0:
         out.append("  [PASS] Sab <img> me alt hai, accessibility theek hai.")
 
-    # Vite hai ya Next.js, us hisab se salah - SMART
     if has_next:
         out.append("  Project Next.js hai, is liye <img> ki jagah <Image> use karo.")
     else:

@@ -1,7 +1,3 @@
-# sql_checker.py - CodeLume Bug Hunter - Sirf .sql ka check
-# Kaam: SQL Database ka kacha chitta nikalna
-# Ise performance.py bulayega, khud nahi chalega
-
 from core.utils import safe_read, get_files_by_ext, format_size
 
 def check_sql_smart(project):
@@ -9,7 +5,6 @@ def check_sql_smart(project):
     out = []
     files = get_files_by_ext(project, ".sql")
 
-    # Agar .sql hai hi nahi, to 【entity-MongoDB¦canonical_name=MongoDB】 ho sakta hai, is liye skip
     if not files:
         return ["  Koi .sql file nahi mili, skip. Agar 【entity-MongoDB¦canonical_name=MongoDB】 hai to ye normal hai."]
 
@@ -32,7 +27,6 @@ def check_sql_smart(project):
         if star > 0:
             out.append(f"    [FAIL] SELECT * {star} baar mila - Sirf zaroori columns likho, * slow karta hai")
 
-        # DELETE bina WHERE ke - Sab se khatarnak
         for line in text.split("\n"):
             l = line.strip().upper()
             if l.startswith("DELETE FROM") and "WHERE" not in l:

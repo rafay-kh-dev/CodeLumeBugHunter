@@ -1,7 +1,3 @@
-# css_checker.py - CodeLume Bug Hunter - Sirf CSS ka check
-# Kaam: Colors zyada hain, !important zyada hai, CSS bari hai, ye pakarna
-# Ise performance.py bulayega, khud nahi chalega
-
 import re
 from core.utils import safe_read, get_files_by_ext, format_size
 
@@ -21,7 +17,6 @@ def check_css_smart(project):
     for f in files:
         text = safe_read(f)
 
-        # Saare hex colors dhoondo, white/black ko chor do
         for col in re.findall(r"#[0-9a-fA-F]{6}", text):
             if col.lower() not in ["#ffffff", "#000000"]:
                 unique_colors.add(col.lower())

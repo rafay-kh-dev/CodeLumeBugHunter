@@ -1,7 +1,3 @@
-# python_checker.py - CodeLume Bug Hunter - Sirf Python ka check
-# Kaam: Python me print() zyada hai, khali except hai, ye pakarna
-# Ise performance.py bulayega, khud nahi chalega
-
 from core.utils import safe_read, get_files_by_ext
 
 def check_python_smart(project):
@@ -26,7 +22,6 @@ def check_python_smart(project):
         if "TODO" in text or "FIXME" in text:
             out.append(f"  [WARN] TODO / FIXME mila: {f.relative_to(project)} - Kaam adhoora hai")
 
-        # Bari file ka check
         sz = f.stat().st_size
         if sz > 80 * 1024:
             out.append(f"  [WARN] Bari file hai: {f.name} - {sz // 1024} KB - Tor ke choti files banao")

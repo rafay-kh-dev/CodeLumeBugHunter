@@ -1,14 +1,7 @@
-# performance.py - CodeLume Bug Hunter - FOLDERS WALA BOSS
-# Kaam: Sirf checkers ko bulana, khud kuch check nahi karna
-# Ab checkers checkers/ folder me hain, core core/ folder me hai
-# Run: py performance.py "C:\CodeLume"
-
 import argparse
 from pathlib import Path
 
-# Core se - bunyad wali cheez
 from core.project_detector import detect_project_type
-# Checkers se - sab checkers apne folder se
 from checkers.sql_checker import check_sql_smart
 from checkers.secrets_checker import check_secrets_smart
 from checkers.gitignore_checker import check_gitignore_smart
@@ -21,6 +14,7 @@ from checkers.js_checker import check_js_smart
 from checkers.images_checker import check_images
 from checkers.backend_checker import check_backend_universal
 from checkers.md_checker import check_md_smart
+from checkers.architecture_checker import check_architecture
 
 def main():
     parser = argparse.ArgumentParser(description="CodeLume Bug Hunter - Professional Folders")
@@ -36,7 +30,6 @@ def main():
     print(f"Project: {project}")
     print("=" * 70)
 
-    # Step 1 - Pehle project ki pehchan
     types, counts, has_next, has_vite = detect_project_type(project)
     print("\n[1] PROJECT TYPE:")
     for t in types:
@@ -45,7 +38,8 @@ def main():
     for k, v in counts.items():
         print(f"    {k}: {v}")
 
-    # Step 2 - Sab checkers ko bulayo
+    check_architecture(project)
+
     all_results = {}
     all_results["SQL"] = check_sql_smart(project)
     all_results["Secrets"] = check_secrets_smart(project)
@@ -84,6 +78,7 @@ def main():
     print("Report ban rahi hai: performance_report.md")
     report = [f"# CodeLume Bug Hunter - Folders Report", f"Project: {project}", "", "## Project Type"] + [f"- {t}" for t in types]
     report += ["", "## File Counts"] + [f"- {k}: {v}" for k, v in counts.items()]
+    report += ["", "## Architecture", "- Architecture check console pe dekhein - Phase 2 complete"]
     for key in ["SQL", "Secrets", "Gitignore", "HTML", "Python", "PHP", "CSS", "JSON", "Markdown", "JS", "Images", "Backend"]:
         report += ["", f"## {key}"] + all_results[key]
 

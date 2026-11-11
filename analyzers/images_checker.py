@@ -1,7 +1,3 @@
-# images_checker.py - CodeLume Bug Hunter - Sirf Images ka check
-# Kaam: Bari images pakarna jo website ko slow karti hain
-# Ise performance.py bulayega, khud nahi chalega
-
 from core.utils import is_ignored, format_size
 
 def check_images(project):
@@ -18,7 +14,6 @@ def check_images(project):
             total += sz
             images.append((f, sz))
 
-    # Sab se bari image pehle
     images.sort(key=lambda x: x[1], reverse=True)
 
     out.append(f"Total Images: {len(images)}, Total Size: {format_size(total)}")

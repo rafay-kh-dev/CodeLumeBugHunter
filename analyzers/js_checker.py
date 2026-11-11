@@ -1,7 +1,3 @@
-# js_checker.py - CodeLume Bug Hunter - Sirf JS / JSX / TSX ka check
-# Kaam: <img> aur console.log pakarna, Vite vs Next ka farq samajh ke
-# Ise performance.py bulayega, khud nahi chalega
-
 from core.utils import safe_read, get_files_by_ext, is_test_file
 
 def check_js_smart(project, has_next):
