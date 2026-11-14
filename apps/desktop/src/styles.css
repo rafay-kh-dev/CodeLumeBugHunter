@@ -1,1 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #090E16;
+    color: #E8EEF4;
+    font-family: 'Roboto', 'Inter', system-ui, sans-serif;
+}
+/* ===== PREMIUM POLISH - GLOBAL ===== */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: rgba(66, 133, 244, .35);
+    color: #fff;
+}
+
+/* Patli premium scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #090E16;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1A2A3B;
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2A3D55;
+}
+
+/* Har button / card pe smooth feel */
+button,
+.card,
+.stat,
+.cat,
+.issue,
+.nav a,
+.proj,
+.user {
+    transition: all .15s ease;
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+/* Keyboard focus - software wali feel */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid #4285F4;
+    outline-offset: 2px;
+}
+
+/* Card hover depth */
+.card:hover,
+.stat:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}

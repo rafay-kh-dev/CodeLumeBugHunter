@@ -1,0 +1,175 @@
+/* ===== CodeLume - Top Bar - Locked Theme ===== */
+:host {
+    display: block;
+    width: 100%;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.top h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.top p {
+    margin: 5px 0 0;
+    color: #8A9AB0;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ===== SEARCH ===== */
+.search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #111E2E;
+    border: 1px solid #1A2A3B;
+    border-radius: 10px;
+    padding: 9px 12px;
+    width: 300px;
+    min-width: 0;
+    flex-shrink: 0;
+    color: #8A9AB0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .15s;
+}
+
+.search:hover {
+    border-color: #4285F4;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, .12);
+}
+
+.search svg {
+    stroke: #8A9AB0;
+    flex-shrink: 0;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search input::placeholder {
+    color: #5B6B82;
+}
+
+.kbd {
+    font-size: 11px;
+    background: #1A2A3B;
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: #8A9AB0;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ===== RIGHT ACTIONS - BELL + SETTINGS ===== */
+.top-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #111E2E;
+    border: 1px solid #1A2A3B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: .15s;
+    flex-shrink: 0;
+}
+
+.icon-btn:hover {
+    border-color: #4285F4;
+    background: rgba(66, 133, 244, .08);
+}
+
+.icon-btn svg {
+    stroke: #8A9AB0;
+    transition: .15s;
+}
+
+.icon-btn:hover svg {
+    stroke: #4285F4;
+}
+
+.icon-btn .dot-notif {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 7px;
+    height: 7px;
+    background: #4285F4;
+    border-radius: 50%;
+}
+
+/* ===== RESPONSIVE - CHOTE BUGS FIX ===== */
+@media (max-width: 1024px) {
+    .search {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .search {
+        width: 100%;
+        order: 2;
+    }
+
+    .top-actions {
+        width: 100%;
+        order: 3;
+        justify-content: flex-end;
+    }
+
+    .top h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .search {
+        padding: 8px 10px;
+    }
+
+    .kbd {
+        display: none;
+    }
+
+    .top p {
+        font-size: 13px;
+    }
+}

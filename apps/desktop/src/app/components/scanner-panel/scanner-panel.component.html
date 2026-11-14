@@ -1,0 +1,143 @@
+<div class="grid">
+  <!-- LEFT - ISSUES -->
+  <div class="card" style="flex: 1">
+    <div class="head">
+      <h3>Issues</h3>
+      <span class="view">View All →</span>
+    </div>
+    <div class="tabs">
+      <span class="tab on">All (12)</span><span class="tab">High (3)</span
+      ><span class="tab">Medium (5)</span><span class="tab">Low (4)</span>
+    </div>
+
+    <div class="issue">
+      <div class="issue-top">
+        <span class="issue-ico"
+          ><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+            <circle cx="8" cy="8" r="6" />
+            <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
+            <path d="M7 6h1v4" /></svg
+        ></span>
+        <div style="flex: 1">
+          <b>Hardcoded token found</b>
+          <p>
+            <span class="mono" style="color: #8ab4ff">server.js : 84</span> — Move token to
+            environment variable.
+          </p>
+          <div class="diff">
+            <div class="d-head">
+              <span>server.js — Fix Preview</span
+              ><span style="color: #4285f4">Apply Fix • Copy</span>
+            </div>
+            <div class="line old">
+              <span class="tag">OLD</span><span>const token = "eyJhbG..."</span>
+            </div>
+            <div class="line new">
+              <span class="tag">NEW</span><span>const token = process.env.ADMIN_TOKEN</span>
+            </div>
+          </div>
+        </div>
+        <span class="pill">HIGH</span><button class="viewbtn">Fix</button>
+      </div>
+    </div>
+
+    <div class="issue">
+      <div class="issue-top">
+        <span class="issue-ico"
+          ><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg
+        ></span>
+        <div style="flex: 1">
+          <b>Large bundle size</b>
+          <p>
+            <span class="mono" style="color: #8ab4ff">app.js : 1</span> — Split bundle, lazy load
+            routes.
+          </p>
+        </div>
+        <span class="pill grey">MEDIUM</span><button class="viewbtn">Fix</button>
+      </div>
+    </div>
+
+    <div class="issue">
+      <div class="issue-top">
+        <span class="issue-ico"
+          ><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+            <rect x="2" y="3" width="20" height="14" rx="2" />
+            <path d="M8 21h8M12 17v4" /></svg
+        ></span>
+        <div style="flex: 1">
+          <b>Missing lazy loading</b>
+          <p>
+            <span class="mono" style="color: #8ab4ff">routes.ts : 12</span> — Enable lazy loading
+            for dashboard.
+          </p>
+        </div>
+        <span class="pill grey">LOW</span><button class="viewbtn">Fix</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT - SEVERITY + BEFORE/AFTER -->
+  <div style="width: 320px; display: flex; flex-direction: column; gap: 14px">
+    <div class="card">
+      <div class="head"><h3>Severity</h3></div>
+      <div style="display: flex; gap: 14px; align-items: center; margin-top: 12px">
+        <div class="donut">
+          <svg width="90" height="90" viewBox="0 0 90 90">
+            <circle cx="45" cy="45" r="36" fill="none" stroke="#1A2A3B" stroke-width="10" />
+            <circle
+              cx="45"
+              cy="45"
+              r="36"
+              fill="none"
+              stroke="#4285F4"
+              stroke-width="10"
+              stroke-dasharray="226"
+              stroke-dashoffset="60"
+              stroke-linecap="round"
+            /></svg
+          ><span>12</span>
+        </div>
+        <div>
+          <div style="font-size: 13px; color: #8a9ab0; margin: 3px 0">
+            <span style="color: #4285f4">●</span> High — 3
+          </div>
+          <div style="font-size: 13px; color: #8a9ab0; margin: 3px 0">
+            <span style="color: #8ab4ff">●</span> Medium — 5
+          </div>
+          <div style="font-size: 13px; color: #8a9ab0; margin: 3px 0">
+            <span style="color: #5b6b82">●</span> Low — 4
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><h3>Before vs After</h3></div>
+      <div class="compare">
+        <div>
+          <span>Before</span><b>82</b>
+          <p>Current score</p>
+        </div>
+        <span style="color: #4285f4; font-size: 20px">→</span>
+        <div>
+          <span>After Fixes</span><b style="color: #4285f4">95</b>
+          <p>After 3 fixes</p>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: #8a9ab0; line-height: 1.5; margin: 10px 0 0">
+        Fix the 3 high issues to jump from 82 to 95. One-Click Fix will apply them safely.
+      </p>
+      <button class="btn-p" style="width: 100%; margin-top: 12px">Apply All Fixes</button>
+    </div>
+
+    <div class="card">
+      <div class="head"><h3>Quick Fix Guide</h3></div>
+      <div style="font-size: 13px; color: #8a9ab0; line-height: 1.6; margin-top: 10px">
+        <div>1. Move token to <span class="mono" style="color: #fff">.env</span></div>
+        <div>2. Restart server</div>
+        <div>3. Re-scan to verify 95</div>
+      </div>
+    </div>
+  </div>
+</div>
